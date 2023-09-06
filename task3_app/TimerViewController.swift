@@ -11,7 +11,7 @@ enum PickerValueType: CaseIterable {
     case minute, second
 }
 
-class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class TimerViewController: UIViewController {
 
     @IBOutlet private weak var pickerView: UIPickerView!
     @IBOutlet private weak var timerLabel: UILabel!
@@ -36,7 +36,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         pickerView.delegate = self
     }
 
-    @IBAction func playPauseButtonTapped(_ sender: UIButton) {
+    @IBAction private func playPauseButtonTapped(_ sender: UIButton) {
         isPlaying.toggle()
 
         if isPlaying {
@@ -48,7 +48,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         updatePlayPauseButtonTitle()
     }
 
-    @objc func updateTimer() {
+    @objc private func updateTimer() {
         if remaniningSeconds > 0 {
             remaniningSeconds -= 1
 
@@ -59,12 +59,12 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         updateTimerLabel()
     }
 
-    func updatePlayPauseButtonTitle() {
+    private func updatePlayPauseButtonTitle() {
         let buttonTitle = isPlaying ? "Pause" : "Play"
         playPauseButton.setTitle(buttonTitle, for: .normal)
     }
 
-    func startCount() {
+    private func startCount() {
         if isPlaying && didTimerStart {
             remaniningSeconds = remainingSecondsWhenPaused
         }
@@ -81,7 +81,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         )
     }
 
-    func pauseCount() {
+    private func pauseCount() {
         if timer != nil {
             timer?.invalidate()
             timer = nil
@@ -89,6 +89,82 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
     }
 
+    private func updateTimerLabel() {
+        let labelMinutes = remaniningSeconds / 60
+        let minuteAsString = String(format:"%02d", labelMinutes)
+        let labelSeconds = remaniningSeconds % 60
+        let secondAsString = String(format:"%02d", labelSeconds)
+        timerLabel.text = minuteAsString + " : " + secondAsString
+    }
+
+    private func applicationDidEnterBackground(_ application: UIApplication) {
+        if timer != nil && isPlaying {
+            startCount()
+        }
+    }
+
+    @IBAction private  func setResetButtonTapped(_ sender: UIButton) {
+        resetStatus()
+    }
+
+    private func resetStatus() {
+        didTimerStart = false
+        if isPlaying {
+            pauseCount()
+            isPlaying = false
+            updatePlayPauseButtonTitle()
+        }
+        remaniningSeconds = 0
+        updateTimerLabel()
+
+        pickerView.selectRow(0, inComponent: 0, animated: false)
+        pickerView.selectRow(0, inComponent: 1, animated: false)
+    }
+}
+
+
+extension TimerViewController {
+
+    private func notificationRequst() {
+        content.title = "Timer has elapsed!"
+        content.subtitle = "Alarm"
+        content.categoryIdentifier = "alarm"
+        content.sound = UNNotificationSound(named: UNNotificationSoundName("task2.mp3"))
+
+        let timeInterval: TimeInterval = 1
+        triggerRequest(timeInterval: timeInterval)
+
+    }
+
+    private func triggerRequest(
+        timeInterval: TimeInterval,
+        isRepeat: Bool = false
+    ) {
+        let uuidString = UUID().uuidString
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: isRepeat)
+        let request = UNNotificationRequest(
+            identifier: uuidString,
+            content: content,
+            trigger: trigger
+        )
+
+        resetStatus()
+
+        current.add(request) { error in
+            if(error == nil){
+                print("successfully")
+            }else{
+                print("error")
+            }
+        }
+    }
+
+}
+
+extension TimerViewController:
+    UIPickerViewDelegate,
+        UIPickerViewDataSource
+{
     func numberOfComponents(
         in pickerView: UIPickerView
     ) -> Int {
@@ -131,76 +207,4 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             remaniningSeconds = selectedMinute * 60 + selectedSecond
         }
     }
-
-    func updateTimerLabel() {
-        let labelMinutes = remaniningSeconds / 60
-        let minuteAsString = String(format:"%02d", labelMinutes)
-        let labelSeconds = remaniningSeconds % 60
-        let secondAsString = String(format:"%02d", labelSeconds)
-        timerLabel.text = minuteAsString + " : " + secondAsString
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        if timer != nil && isPlaying {
-            startCount()
-        }
-    }
-
-    @IBAction func setResetButtonTapped(_ sender: UIButton) {
-        resetStatus()
-    }
-
-    private func resetStatus() {
-        didTimerStart = false
-        if isPlaying {
-            pauseCount()
-            isPlaying = false
-            updatePlayPauseButtonTitle()
-        }
-        remaniningSeconds = 0
-        updateTimerLabel()
-
-        pickerView.selectRow(0, inComponent: 0, animated: false)
-        pickerView.selectRow(0, inComponent: 1, animated: false)
-    }
 }
-
-
-extension TimerViewController {
-
-    func notificationRequst() {
-        content.title = "Timer has elapsed!"
-        content.subtitle = "Alarm"
-        content.categoryIdentifier = "alarm"
-        content.sound = UNNotificationSound(named: UNNotificationSoundName("task2.mp3"))
-
-        let timeInterval: TimeInterval = 1
-        triggerRequest(timeInterval: timeInterval)
-
-    }
-
-    func triggerRequest(
-        timeInterval: TimeInterval,
-        isRepeat: Bool = false
-    ) {
-        let uuidString = UUID().uuidString
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: isRepeat)
-        let request = UNNotificationRequest(
-            identifier: uuidString,
-            content: content,
-            trigger: trigger
-        )
-        
-        resetStatus()
-
-        current.add(request) { error in
-            if(error == nil){
-                print("successfully")
-            }else{
-                print("error")
-            }
-        }
-    }
-
-}
-
