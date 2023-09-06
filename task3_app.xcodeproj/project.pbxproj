@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		48D1BF612AA09434001204CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1BF602AA09434001204CE /* AppDelegate.swift */; };
 		48D1BF632AA09434001204CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1BF622AA09434001204CE /* SceneDelegate.swift */; };
-		48D1BF652AA09434001204CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1BF642AA09434001204CE /* ViewController.swift */; };
+		48D1BF652AA09434001204CE /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1BF642AA09434001204CE /* TimerViewController.swift */; };
 		48D1BF682AA09434001204CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1BF662AA09434001204CE /* Main.storyboard */; };
 		48D1BF6A2AA09436001204CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48D1BF692AA09436001204CE /* Assets.xcassets */; };
 		48D1BF6D2AA09436001204CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D1BF6B2AA09436001204CE /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		48D1BF5D2AA09434001204CE /* task3_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = task3_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48D1BF602AA09434001204CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48D1BF622AA09434001204CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		48D1BF642AA09434001204CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48D1BF642AA09434001204CE /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		48D1BF672AA09434001204CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48D1BF692AA09436001204CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48D1BF6C2AA09436001204CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				48D1BF602AA09434001204CE /* AppDelegate.swift */,
 				48D1BF622AA09434001204CE /* SceneDelegate.swift */,
-				48D1BF642AA09434001204CE /* ViewController.swift */,
+				48D1BF642AA09434001204CE /* TimerViewController.swift */,
 				48D1BF662AA09434001204CE /* Main.storyboard */,
 				48D1BF692AA09436001204CE /* Assets.xcassets */,
 				48D1BF6B2AA09436001204CE /* LaunchScreen.storyboard */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48D1BF652AA09434001204CE /* ViewController.swift in Sources */,
+				48D1BF652AA09434001204CE /* TimerViewController.swift in Sources */,
 				48D1BF612AA09434001204CE /* AppDelegate.swift in Sources */,
 				48D1BF632AA09434001204CE /* SceneDelegate.swift in Sources */,
 			);
@@ -287,7 +287,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5TH8C5XY6D;
+				DEVELOPMENT_TEAM = YH9484UXC5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = task3_app/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,7 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5TH8C5XY6D;
+				DEVELOPMENT_TEAM = YH9484UXC5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = task3_app/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

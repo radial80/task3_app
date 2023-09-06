@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  task3_app
 //
-//  Created by Kasım Sağır on 31.08.2023.
+//  Created by Recep Uyduran on 31.08.2023.
 //
 
 import UIKit

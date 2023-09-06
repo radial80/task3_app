@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Timer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="task3_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCd-gl-PeE">
+                                <rect key="frame" x="37" y="138" width="319.33333333333331" height="247"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKa-cJ-Xov">
+                                <rect key="frame" x="155.66666666666666" y="448" width="82" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEu-Oa-jZP">
+                                        <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="WEu-Oa-jZP" firstAttribute="leading" secondItem="cKa-cJ-Xov" secondAttribute="leading" id="KOh-6E-Ovt"/>
+                                    <constraint firstAttribute="bottom" secondItem="WEu-Oa-jZP" secondAttribute="bottom" id="Vnz-yV-puM"/>
+                                    <constraint firstAttribute="trailing" secondItem="WEu-Oa-jZP" secondAttribute="trailing" id="aJi-ce-5rP"/>
+                                    <constraint firstItem="WEu-Oa-jZP" firstAttribute="top" secondItem="cKa-cJ-Xov" secondAttribute="top" id="bJR-dJ-yQh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMb-AX-e8o">
+                                <rect key="frame" x="98.333333333333329" y="554" width="196.33333333333337" height="50.333333333333371"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Play" buttonSize="large"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="playPauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6De-7c-uKe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsF-pR-Hgo">
+                                <rect key="frame" x="147.33333333333334" y="651" width="98.333333333333343" height="35"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Set/Reset"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setResetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5r2-pr-ibU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SMb-AX-e8o" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3HM-cr-zct"/>
+                            <constraint firstItem="cKa-cJ-Xov" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.208651" id="Aza-lj-YEw"/>
+                            <constraint firstItem="SMb-AX-e8o" firstAttribute="top" secondItem="WEu-Oa-jZP" secondAttribute="bottom" constant="76" id="Gm7-Q8-7Ov"/>
+                            <constraint firstItem="WsF-pR-Hgo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="H1D-l9-bfk"/>
+                            <constraint firstItem="qCd-gl-PeE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="79" id="Pcd-kD-ig2"/>
+                            <constraint firstItem="WsF-pR-Hgo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.25" id="QHK-UI-9Kx"/>
+                            <constraint firstItem="cKa-cJ-Xov" firstAttribute="top" secondItem="qCd-gl-PeE" secondAttribute="bottom" constant="63" id="Qfp-3k-jDe"/>
+                            <constraint firstItem="cKa-cJ-Xov" firstAttribute="leading" secondItem="qCd-gl-PeE" secondAttribute="trailing" constant="-200.66666666666663" id="Tc4-13-vG8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cKa-cJ-Xov" secondAttribute="bottom" constant="340" id="a2a-EA-gXs"/>
+                            <constraint firstItem="WsF-pR-Hgo" firstAttribute="top" secondItem="SMb-AX-e8o" secondAttribute="bottom" constant="46.666666666666629" id="bbi-5P-mvx"/>
+                            <constraint firstItem="SMb-AX-e8o" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="bhQ-Va-Bko"/>
+                            <constraint firstItem="qCd-gl-PeE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="khE-4w-gNE"/>
+                            <constraint firstItem="cKa-cJ-Xov" firstAttribute="centerX" secondItem="qCd-gl-PeE" secondAttribute="centerX" id="tOp-2p-seg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerView" destination="qCd-gl-PeE" id="zqc-Q4-vlE"/>
+                        <outlet property="playPauseButton" destination="SMb-AX-e8o" id="KCy-I5-gTX"/>
+                        <outlet property="setResetButton" destination="WsF-pR-Hgo" id="u0U-RH-dC7"/>
+                        <outlet property="timerLabel" destination="WEu-Oa-jZP" id="oak-eB-kVY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1" y="4"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
